@@ -4,22 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace hw4
+namespace hw5
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int pictures = 52;
-            int picturesInRow = 3;
-            int rowsFull;
-            int picturesUnused;
+            string name = "Ivanov";
+            string surname = "Leonid";
+            string buffer;
 
-            rowsFull = pictures / picturesInRow;
-            picturesUnused = pictures % picturesInRow;
+            Console.WriteLine($"Исходное значение переменных:\nname = {name}\nsurname = {surname}");
 
-            Console.WriteLine($"Полностью заполненных рядов будет выведено: {rowsFull}");
-            Console.WriteLine($"Картинок сверх меры будет: {picturesUnused}");
+            buffer = name;
+            name = surname;
+            surname = buffer;
+
+            Console.WriteLine($"Значение переменных после перестановки:\nname = {name}\nsurname = {surname}");
         }
     }
 }
