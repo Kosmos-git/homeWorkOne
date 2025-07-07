@@ -12,17 +12,18 @@ namespace exitControl
         {
             Console.Write("Программа позволяет ввести любое сообщение. Для завершения введите: 'exit'.\n\n");
 
+            bool exitProgram = true;
             string massageUser;
-            string exitProgram = "exit";
+            string stopWord = "exit";
 
-            while (true)
+            while (exitProgram)
             {
                 Console.Write("Введите желаемое сообщение: ");
                 massageUser = Console.ReadLine();
 
-                if (massageUser == exitProgram)
+                if (massageUser == stopWord)
                 {
-                    break;
+                    exitProgram = false;
                 }
             }
 
