@@ -6,15 +6,22 @@ namespace sequence
     {
         static void Main(string[] args)
         {
-            int initialTermProgression = 5;
-            int differenceInProgression = 7;
+            int initialTermProgression;
+            int differenceInProgression;
+            int maximumTermProgression;
+            
+            Console.Write("Введите начальный член прогрессии: ");
+            initialTermProgression = Convert.ToInt32(Console.ReadLine());
+            
             int memberOfProgression = initialTermProgression;
-            int numberIterations;
 
-            Console.Write("Введите количество членов прогрессии, которые Вас интересуют: ");
-            numberIterations = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите шаг прогрессии: ");
+            differenceInProgression = Convert.ToInt32(Console.ReadLine());
 
-            for (int i = 0; i < numberIterations; i++)
+            Console.Write("Введите максимальный член прогрессии: ");
+            maximumTermProgression = Convert.ToInt32(Console.ReadLine());
+
+            while (memberOfProgression <= maximumTermProgression)
             {
                 Console.Write(memberOfProgression + " ");
                 memberOfProgression += differenceInProgression;
