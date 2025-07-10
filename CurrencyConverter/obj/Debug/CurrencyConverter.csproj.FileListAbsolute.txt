@@ -1,8 +1,0 @@
-D:\Programming\C#\VKA\topicTwoConditionalOperatorsAndLoops\hw6\CurrencyConverter\CurrencyConverter\bin\Debug\CurrencyConverter.exe.config
-D:\Programming\C#\VKA\topicTwoConditionalOperatorsAndLoops\hw6\CurrencyConverter\CurrencyConverter\bin\Debug\CurrencyConverter.exe
-D:\Programming\C#\VKA\topicTwoConditionalOperatorsAndLoops\hw6\CurrencyConverter\CurrencyConverter\bin\Debug\CurrencyConverter.pdb
-D:\Programming\C#\VKA\topicTwoConditionalOperatorsAndLoops\hw6\CurrencyConverter\CurrencyConverter\obj\Debug\CurrencyConverter.csproj.AssemblyReference.cache
-D:\Programming\C#\VKA\topicTwoConditionalOperatorsAndLoops\hw6\CurrencyConverter\CurrencyConverter\obj\Debug\CurrencyConverter.csproj.CoreCompileInputs.cache
-D:\Programming\C#\VKA\topicTwoConditionalOperatorsAndLoops\hw6\CurrencyConverter\CurrencyConverter\obj\Debug\CurrencyConverter.exe
-D:\Programming\C#\VKA\topicTwoConditionalOperatorsAndLoops\hw6\CurrencyConverter\CurrencyConverter\obj\Debug\CurrencyConverter.pdb
-D:\Programming\C#\VKA\topicTwoConditionalOperatorsAndLoops\hw6\CurrencyConverter\CurrencyConverter\obj\Debug\CurrencyConverter.exe.config
