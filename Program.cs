@@ -1,23 +1,33 @@
 ﻿using System;
+using System.Threading;
 
-namespace hw7
+namespace SumNumbers
 {
     internal class Program
     {
         static void Main(string[] args)
-        {       
-            int appointmentDurationMinutes = 10;
-            int minutesInHour = 60;
+        {
+            int sumNumbers = 0;
+            int multiplicityCheckNo1 = 3;
+            int multiplicityCheckNo2 = 5;
+            int numberMaximum = 100;
+            int numberMinimum = 1;
 
-            Console.Write("Сколько людей в очереди? ");
-            int peopleInQueue = Convert.ToInt32(Console.ReadLine());
+            Random random = new Random();
+                        
+            int number = random.Next(numberMinimum, numberMaximum + 1);
 
-            int queueTimeInMinutetes = peopleInQueue * appointmentDurationMinutes;
+            for (int i = 0; i <= number; i++)
+            {
+                if (i % multiplicityCheckNo1 == 0 || i % multiplicityCheckNo2 == 0)
+                {
+                    sumNumbers += i;
+                }
+            }
 
-            int hoursInQueue = queueTimeInMinutetes / minutesInHour;
-            int minutesInQueue = queueTimeInMinutetes % minutesInHour;
-
-            Console.WriteLine($"Вы должны отстоять в очереди {hoursInQueue} часов и {minutesInQueue} минут.");
+            Console.WriteLine($"Получено рандомное число: {number}.");
+            Console.WriteLine($"Сумма всех положительных чисел меньше {number}, которые " +
+                $"кратны {multiplicityCheckNo1} и {multiplicityCheckNo2} равна {sumNumbers}.");
         }
     }
 }
