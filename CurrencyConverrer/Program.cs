@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CurrencyConverter
 {
@@ -18,29 +14,32 @@ namespace CurrencyConverter
             const string CommandCnyToUsd = "CnyToUsd";
             const string CommandExit = "Exit";
 
-            float rublesInWallet;
-            float dollarsInWallet;
-            float yuanInWallet;
+            float rubInWallet;
+            float usdToWallet;
+            float cnyToWallet;
 
-            int rubToUsd = 79, usdToRub = 74;
-            int rubToCny = 11, cnyToRub = 10;
-            int usdToCny = 7, cnyToUsd = 7;
+            float rubToUsd = 1f / 79;
+            float usdToRub = 74;
+            float rubToCny = 1f / 11;
+            float cnyToRub = 10;
+            float usdToCny = 7;
+            float cnyToUsd = 1f / 7;
 
             float exchangeCurrencyCount;
+
             bool isWork = true;
 
             Console.WriteLine("Добро пожаловать в обменник валют!\n");
 
             Console.Write("Введите баланс рублей: ");
-            rublesInWallet = Convert.ToSingle(Console.ReadLine());
+            rubInWallet = Convert.ToSingle(Console.ReadLine());
 
             Console.Write("Введите баланс долларов: ");
-            dollarsInWallet = Convert.ToSingle(Console.ReadLine());
+            usdToWallet = Convert.ToSingle(Console.ReadLine());
 
             Console.Write("Введите баланс юаней: ");
-            yuanInWallet = Convert.ToSingle(Console.ReadLine());
+            cnyToWallet = Convert.ToSingle(Console.ReadLine());
 
-            string balance = $"Ваш баланс: {rublesInWallet} рублей, {dollarsInWallet} долларов, {yuanInWallet} юаней.\n";
 
             Console.WriteLine("\nОперации возможные в обменнике:\n\n" +
                 $"{CommandRubToUsd} - обмнять рубли на доллары.\n" +
@@ -61,12 +60,12 @@ namespace CurrencyConverter
                         Console.WriteLine("\nОбмен рублей на доллары.\n");
                         Console.Write("Сколько вы хотите обменять? ");
                         exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
-                        if (rublesInWallet >= exchangeCurrencyCount)
+
+                        if (rubInWallet >= exchangeCurrencyCount)
                         {
-                            rublesInWallet -= exchangeCurrencyCount;
-                            dollarsInWallet += exchangeCurrencyCount / rubToUsd;
+                            rubInWallet -= exchangeCurrencyCount;
+                            usdToWallet += exchangeCurrencyCount * rubToUsd;
                             Console.WriteLine("\nОбмен успешно произведен.\n");
-                            Console.WriteLine(balance);
                         }
                         else
                         {
@@ -78,12 +77,12 @@ namespace CurrencyConverter
                         Console.WriteLine("\nОбмен долларов на рубли.\n");
                         Console.Write("Сколько вы хотите обменять? ");
                         exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
-                        if (dollarsInWallet >= exchangeCurrencyCount)
+
+                        if (usdToWallet >= exchangeCurrencyCount)
                         {
-                            dollarsInWallet -= exchangeCurrencyCount;
-                            rublesInWallet += exchangeCurrencyCount * usdToRub;
+                            usdToWallet -= exchangeCurrencyCount;
+                            rubInWallet += exchangeCurrencyCount * usdToRub;
                             Console.WriteLine("\nОбмен успешно произведен.\n");
-                            Console.WriteLine(balance);
                         }
                         else
                         {
@@ -95,12 +94,12 @@ namespace CurrencyConverter
                         Console.WriteLine("\nОбмен рублей на юани.\n");
                         Console.Write("Сколько вы хотите обменять? ");
                         exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
-                        if (rublesInWallet >= exchangeCurrencyCount)
+
+                        if (rubInWallet >= exchangeCurrencyCount)
                         {
-                            rublesInWallet -= exchangeCurrencyCount;
-                            yuanInWallet += exchangeCurrencyCount / rubToCny;
+                            rubInWallet -= exchangeCurrencyCount;
+                            cnyToWallet += exchangeCurrencyCount * rubToCny;
                             Console.WriteLine("\nОбмен успешно произведен.\n");
-                            Console.WriteLine(balance);
                         }
                         else
                         {
@@ -112,30 +111,29 @@ namespace CurrencyConverter
                         Console.WriteLine("\nОбмен юаней на рубли.\n");
                         Console.Write("Сколько вы хотите обменять? ");
                         exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
-                        if (yuanInWallet >= exchangeCurrencyCount)
+
+                        if (cnyToWallet >= exchangeCurrencyCount)
                         {
-                            yuanInWallet -= exchangeCurrencyCount;
-                            rublesInWallet += exchangeCurrencyCount * cnyToRub;
+                            cnyToWallet -= exchangeCurrencyCount;
+                            rubInWallet += exchangeCurrencyCount * cnyToRub;
                             Console.WriteLine("\nОбмен успешно произведен.\n");
-                            Console.WriteLine(balance);
                         }
                         else
                         {
                             Console.WriteLine("\nНедопустимое количество юаней.\n");
                         }
                         break;
-                        break;
 
                     case CommandUsdToCny:
                         Console.WriteLine("\nОбмен долларов на юани.\n");
                         Console.Write("Сколько вы хотите обменять? ");
                         exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
-                        if (dollarsInWallet >= exchangeCurrencyCount)
+
+                        if (usdToWallet >= exchangeCurrencyCount)
                         {
-                            dollarsInWallet -= exchangeCurrencyCount;
-                            yuanInWallet += exchangeCurrencyCount * usdToCny;
+                            usdToWallet -= exchangeCurrencyCount;
+                            cnyToWallet += exchangeCurrencyCount * usdToCny;
                             Console.WriteLine("\nОбмен успешно произведен.\n");
-                            Console.WriteLine(balance);
                         }
                         else
                         {
@@ -147,12 +145,12 @@ namespace CurrencyConverter
                         Console.WriteLine("\nОбмен юаней на доллары.\n");
                         Console.Write("Сколько вы хотите обменять? ");
                         exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
-                        if (yuanInWallet >= exchangeCurrencyCount)
+
+                        if (cnyToWallet >= exchangeCurrencyCount)
                         {
-                            yuanInWallet -= exchangeCurrencyCount;
-                            dollarsInWallet += exchangeCurrencyCount / cnyToUsd;
+                            cnyToWallet -= exchangeCurrencyCount;
+                            usdToWallet += exchangeCurrencyCount * cnyToUsd;
                             Console.WriteLine("\nОбмен успешно произведен.\n");
-                            Console.WriteLine(balance);
                         }
                         else
                         {
@@ -170,6 +168,7 @@ namespace CurrencyConverter
                         Console.WriteLine("\nВыбрана неверная операция\n\n");
                         break;
                 }
+                Console.WriteLine($"Ваш баланс: {rubInWallet} рублей, {usdToWallet} долларов, {cnyToWallet} юаней.\n");
             }
         }
     }
