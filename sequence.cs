@@ -9,24 +9,19 @@ namespace sequence
             int initialTermProgression;
             int differenceInProgression;
             int maximumTermProgression;
-            int elementsProgression;
-
 
             Console.Write("Введите начальный член прогрессии: ");
             initialTermProgression = Convert.ToInt32(Console.ReadLine());
 
-            int memberOfProgression = initialTermProgression;
-
             Console.Write("Введите шаг прогрессии: ");
             differenceInProgression = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Введите число элементов прогрессии: ");
-            elementsProgression = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите максимальный член прогрессии: ");
+            maximumTermProgression = Convert.ToInt32(Console.ReadLine());
 
-            for (int i = 0; i < elementsProgression; i++)
+            for (int i = initialTermProgression; i <= maximumTermProgression; i += differenceInProgression)
             {
-                Console.Write(memberOfProgression + " ");
-                memberOfProgression += differenceInProgression;
+                Console.Write(i + " ");
             }
         }
     }
