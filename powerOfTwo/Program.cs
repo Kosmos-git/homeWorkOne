@@ -8,22 +8,21 @@ namespace powerOfTwo
         {
             Random random = new Random();
 
-            int numberInput = random.Next(100);
-            int minPowerTwo = 0;
-            int numberPowerTwo = 2;
+            int maxValue = 1000;
+            int numberInput = random.Next(maxValue);
+            int minPowerTwo = 1;
+            int powerOfNumber = 2;
+            int valueOfNumber = 2;
 
-            for (int i = numberPowerTwo; i < numberInput; i *= 2)
+            for (int i = valueOfNumber; i <= numberInput; i *= powerOfNumber)
             {
                 minPowerTwo++;
-                numberPowerTwo = i;
+                valueOfNumber = i * powerOfNumber;
             }
-
-            minPowerTwo++;
-            numberPowerTwo *= 2;
 
             Console.WriteLine($"Для числа {numberInput}, " +
                 $"минимальная степень двойки, превышающая само число будет: {minPowerTwo}." +
-                $"\n2 в степени {minPowerTwo}: {numberPowerTwo}");
+                $"\nДвойка в степени {minPowerTwo}: {valueOfNumber}");
         }
     }
 }
