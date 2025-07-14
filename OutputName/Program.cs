@@ -14,43 +14,22 @@ namespace OutputName
 
             Console.Write("Введите имя: ");
             name = Console.ReadLine();
-            
+
             Console.WriteLine();
 
-            int lengthBox = name.Length + 1;
-            int heightBox = 3;
-            int stringName = 1;
-            int threeConclusions = 3;
-            int outputName = 1;
+            string stringOfCharacters = "";
+            string stringWithName;
+            
+            stringWithName = symbolOutput + name + symbolOutput;
 
-            for (int i = 0; i < heightBox; i++)
+            for (int i = 0; i < stringWithName.Length; i++)
             {
-                if (i != stringName)
-                {
-                    for (int j = 0; j <= lengthBox; j++)
-                    {
-                        Console.Write(symbolOutput);
-                    }
-
-                    Console.WriteLine();
-                }
-                else
-                {
-                    for (int k = 0; k < threeConclusions; k++)
-                    {
-                        if (k != outputName)
-                        {
-                            Console.Write(symbolOutput);
-                        }
-                        else
-                        {
-                            Console.Write(name);
-                        }
-                    }
-
-                    Console.WriteLine();
-                }
+                stringOfCharacters += symbolOutput;
             }
+
+            Console.WriteLine(stringOfCharacters);
+            Console.WriteLine(stringWithName);
+            Console.WriteLine(stringOfCharacters);
         }
     }
 }
