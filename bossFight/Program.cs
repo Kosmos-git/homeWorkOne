@@ -6,10 +6,10 @@ namespace bossFight
     {
         static void Main(string[] args)
         {
-            const string normalAttack = "1";
-            const string fireball = "2";
-            const string explosion = "3";
-            const string treatment = "4";
+            const string CommandsNormalAttack = "1";
+            const string CommandsFireball = "2";
+            const string CommandsExplosion = "3";
+            const string CommandsTreatment = "4";
 
             Random random = new Random();
 
@@ -38,6 +38,8 @@ namespace bossFight
             int numberUsesOfTreatment = 0;
             int maxNumberUsesOfTreatment = 3;
 
+            int remainderNumberUsesOfTreatment;
+
             int amountHealthPointsRestored;
             int minAmountHealthPointsRestored;
             int maxAmountHealthPointsRestored;
@@ -46,21 +48,19 @@ namespace bossFight
             int minAmountManaRestored;
             int maxAmountManaRestored;
 
-            int fransferToTenPercent = 10;
-            int fransferToTwentyFivePercent = 4;
+            int transferToTenPercent = 10;
+            int transferToTwentyFivePercent = 4;
 
             bool isUsedFireball = false;
 
             string historyOfBattle = "";
 
             string skillsPlayer = $"Твои умения:\n\n" +
-                                    $"{normalAttack} - Обычная атака. Наносит от {minAttackPlayer} до {maxAttackPlayer} урона.\n\n" +
-                                    $"{fireball} - Огненный шар, который тратит {manaCosts} маны. Наносит от {minAttackFireball} до {maxAttackFireball} урона.\n\n" +
-                                    $"{explosion} - Взрыв. Можно вызывать, только если был использован огненный шар. " +
+                                    $"{CommandsNormalAttack} - Обычная атака. Наносит от {minAttackPlayer} до {maxAttackPlayer} урона.\n\n" +
+                                    $"{CommandsFireball} - Огненный шар, который тратит {manaCosts} маны. Наносит от {minAttackFireball} до {maxAttackFireball} урона.\n\n" +
+                                    $"{CommandsExplosion} - Взрыв. Можно вызывать, только если был использован огненный шар. " +
                                                    $"Для повторного применения надо повторно использовать огненный шар. Наносит от {minAttackExplosion} до {maxAttackExplosion} урона.\n\n" +
-                                    $"{treatment} - Лечение. Восстанавливает здоровье и ману, но не больше их максимального значения. Можно использовать только три раза.\n\n" +
-                                    $"";//{Command5} - Повторить список команд, которые знает программа.\n\n" +
-                                        //$"{Command6} - Выход из программы.\n\n\n";
+                                    $"{CommandsTreatment} - Лечение. Восстанавливает здоровье и ману, но не больше их максимального значения. Можно использовать только три раза.\n\n";
 
             Console.WriteLine("Это финальное испытание: бой с Боссом. Прояви себя как настоящий герой - сражайся до последнего вздоха!!\n");
 
@@ -82,13 +82,13 @@ namespace bossFight
 
                 switch (Console.ReadLine())
                 {
-                    case normalAttack:
+                    case CommandsNormalAttack:
                         attackPlayer = random.Next(minAttackPlayer, maxAttackPlayer);
                         healthPointsBoss -= attackPlayer;
                         historyOfBattle += $"   Герой: Обычная атака: Босс -{attackPlayer} очков здоровья.\n";
                         Console.WriteLine($"\nГерой: Обычная атака: Босс -{attackPlayer} очков здоровья.\n");
                         break;
-                    case fireball:
+                    case CommandsFireball:
                         if (manaCosts <= manaPlayer)
                         {
                             manaPlayer -= manaCosts;
@@ -104,7 +104,7 @@ namespace bossFight
                             Console.WriteLine("\nНедостаточно маны. Ты пропускаешь свой ход\n");
                         }
                         break;
-                    case explosion:
+                    case CommandsExplosion:
                         if (isUsedFireball)
                         {
                             attackExplosion = random.Next(minAttackExplosion, maxAttackExplosion);
@@ -119,21 +119,23 @@ namespace bossFight
                             Console.WriteLine("\nГерой: Перед умением - 'Взрыв' необходимо использовать умение 'Огненный шар'. Ты пропускаешь свой ход.\n");
                         }
                         break;
-                    case treatment:
+                    case CommandsTreatment:
                         if (numberUsesOfTreatment < maxNumberUsesOfTreatment)
                         {
-                            minAmountHealthPointsRestored = Convert.ToInt32((Convert.ToSingle(maxhealthPointsPlayer) - healthPointsPlayer) / fransferToTenPercent); //Восстановит от 10 %
-                            maxAmountHealthPointsRestored = Convert.ToInt32((Convert.ToSingle(maxhealthPointsPlayer) - healthPointsPlayer) / fransferToTwentyFivePercent);  //            до 25 % от потерянного здоровья
+                            minAmountHealthPointsRestored = Convert.ToInt32((Convert.ToSingle(maxhealthPointsPlayer) - healthPointsPlayer) / transferToTenPercent);
+                            maxAmountHealthPointsRestored = Convert.ToInt32((Convert.ToSingle(maxhealthPointsPlayer) - healthPointsPlayer) / transferToTwentyFivePercent);
                             amountHealthPointsRestored = random.Next(minAmountHealthPointsRestored, maxAmountHealthPointsRestored);
                             healthPointsPlayer += amountHealthPointsRestored;
 
-                            minAmountManaRestored = Convert.ToInt32((Convert.ToSingle(maxManaPlayer) - manaPlayer) / fransferToTwentyFivePercent); //Восстановит от 25 %
-                            maxAmountManaRestored = Convert.ToInt32(Convert.ToSingle(maxManaPlayer) - manaPlayer);     //            до 100 % от использованной маны
+                            minAmountManaRestored = Convert.ToInt32((Convert.ToSingle(maxManaPlayer) - manaPlayer) / transferToTwentyFivePercent);
+                            maxAmountManaRestored = Convert.ToInt32(Convert.ToSingle(maxManaPlayer) - manaPlayer);
                             amountManaRestored = random.Next(minAmountManaRestored, maxAmountManaRestored);
                             manaPlayer += amountManaRestored;
 
-                            historyOfBattle += $"   Герой: Лечение: Герой +{amountHealthPointsRestored} очков здоровья, +{amountManaRestored} маны. Осталось: {maxNumberUsesOfTreatment - numberUsesOfTreatment - 1}\n";
-                            Console.WriteLine($"\nГерой: Лечение: Герой +{amountHealthPointsRestored} очков здоровья, +{amountManaRestored} маны. Осталось: {maxNumberUsesOfTreatment - numberUsesOfTreatment - 1}\n");
+                            remainderNumberUsesOfTreatment = maxNumberUsesOfTreatment - numberUsesOfTreatment - 1;
+
+                            historyOfBattle += $"   Герой: Лечение: Герой +{amountHealthPointsRestored} очков здоровья, +{amountManaRestored} маны. Осталось: {remainderNumberUsesOfTreatment}\n";
+                            Console.WriteLine($"\nГерой: Лечение: Герой +{amountHealthPointsRestored} очков здоровья, +{amountManaRestored} маны. Осталось: {remainderNumberUsesOfTreatment}\n");
                             numberUsesOfTreatment++;
                         }
                         else
