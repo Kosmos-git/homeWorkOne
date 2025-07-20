@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml.Linq;
 
 namespace largestElement
 {
@@ -11,7 +10,7 @@ namespace largestElement
             int minValue = 10;
             int maxValue = 99;
             int elementMax = int.MinValue;
-            int symbol = 0;
+            int elementInsteadMaximum = 0;
 
             Random random = new Random();
 
@@ -30,6 +29,7 @@ namespace largestElement
                         elementMax = array[i, j];
                     }
                 }
+
                 Console.WriteLine();
             }
 
@@ -42,11 +42,12 @@ namespace largestElement
                 {
                     if (elementMax == array[i, j])
                     {
-                        array[i, j] = symbol;
+                        array[i, j] = elementInsteadMaximum;
                     }
 
                     Console.Write(array[i, j] + " ");
                 }
+
                 Console.WriteLine();
             }
         }
