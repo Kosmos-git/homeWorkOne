@@ -23,10 +23,10 @@ namespace localMaxima
 
             if (sequenceNumbers[0] > sequenceNumbers[1])
             {
-                Console.Write(sequenceNumbers[1] + " ");
+                Console.Write(sequenceNumbers[0] + " ");
             }
 
-            for (int i = 1; i < sequenceNumbers.Length; i++)
+            for (int i = 1; i < sequenceNumbers.Length - 1; i++)
             {            
                 if (sequenceNumbers[i] > sequenceNumbers[i - 1] && sequenceNumbers[i] > sequenceNumbers[i + 1])
                 {
@@ -34,9 +34,9 @@ namespace localMaxima
                 }
             }
 
-            if (sequenceNumbers[sequenceNumbers.Length] > sequenceNumbers[sequenceNumbers.Length - 1])
+            if (sequenceNumbers[sequenceNumbers.Length - 1] > sequenceNumbers[sequenceNumbers.Length - 2])
             {
-                Console.Write(sequenceNumbers[sequenceNumbers.Length] + " ");
+                Console.Write(sequenceNumbers[sequenceNumbers.Length - 1] + " ");
             }
         }
     }
