@@ -20,9 +20,9 @@ namespace dynamicArray
                 Console.Clear();
 
                 Console.SetCursorPosition(0, 4);
-                Console.WriteLine("Введите число массива\n\n\n" +
-                                  "sum - вывести сумму массива;\n" +
-                                  "exit - выйти из программы.");
+                Console.WriteLine($"Введите число массива\n\n\n" +
+                                  $"{CommandSum} - вывести сумму массива;\n" +
+                                  $"{CommandExit} - выйти из программы.");
 
                 Console.SetCursorPosition(0, 0);
                 Console.Write("Массив: ");
@@ -37,7 +37,12 @@ namespace dynamicArray
                 switch (userInput)
                 {
                     case CommandSum:
+                        for (int k = 0; k < array.Length; k++)
+                        {
+                            sum += array[k];
+                        }
                         Console.WriteLine("Сумма массива: " + sum);
+                        sum = 0;
                         Console.ReadKey();
                         break;
 
@@ -58,8 +63,7 @@ namespace dynamicArray
                             }
 
                             tempArray[newLengthArray - 1] = elementArray;
-                            sum += elementArray;
-
+                            
                             array = tempArray;
                         }
                         else
