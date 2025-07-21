@@ -6,39 +6,37 @@ namespace localMaxima
     {
         static void Main(string[] args)
         {
-            int dimensionArray = 30;
-            int[] array = new int[dimensionArray];
+            int lengthaSequenceNumbers = 30;
+            int[] sequenceNumbers = new int[lengthaSequenceNumbers];
             int minValue = 10;
             int maxValue = 99;
-            int indexFirstElement = 0;
-            int indexLastElement = dimensionArray - 1;
 
             Random random = new Random();
 
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < sequenceNumbers.Length; i++)
             {
-                array[i] = random.Next(minValue, maxValue + 1);
-                Console.Write(array[i] + " ");
+                sequenceNumbers[i] = random.Next(minValue, maxValue + 1);
+                Console.Write(sequenceNumbers[i] + " ");
             }
 
             Console.Write("\nЛокальные максимумы: ");
 
-            if (array[indexFirstElement] > array[indexFirstElement + 1])
+            if (sequenceNumbers[0] > sequenceNumbers[1])
             {
-                Console.Write(array[indexFirstElement] + " ");
+                Console.Write(sequenceNumbers[1] + " ");
             }
 
-            for (int i = indexFirstElement + 1; i < indexLastElement; i++)
+            for (int i = 1; i < sequenceNumbers.Length; i++)
             {            
-                if (array[i] > array[i - 1] && array[i] > array[i + 1])
+                if (sequenceNumbers[i] > sequenceNumbers[i - 1] && sequenceNumbers[i] > sequenceNumbers[i + 1])
                 {
-                    Console.Write(array[i] + " ");
+                    Console.Write(sequenceNumbers[i] + " ");
                 }
             }
 
-            if (array[indexLastElement] > array[indexLastElement - 1])
+            if (sequenceNumbers[sequenceNumbers.Length] > sequenceNumbers[sequenceNumbers.Length - 1])
             {
-                Console.Write(array[indexLastElement] + " ");
+                Console.Write(sequenceNumbers[sequenceNumbers.Length] + " ");
             }
         }
     }
